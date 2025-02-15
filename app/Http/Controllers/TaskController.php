@@ -108,6 +108,10 @@ class TaskController extends Controller
 
         $task->update($validatedData);
 
+                // Send email notification to the assigned student
+        $assignedUser = User::findOrFail($validatedData['assigned_to']);
+        Mail::to($assignedUser->email)->send(new TaskAssigned($task, $assignedUser));
+
         return redirect()->route('tasks.index')->with('message', 'Task updated successfully.');
     }
 

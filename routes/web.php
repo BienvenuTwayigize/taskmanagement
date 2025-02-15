@@ -8,18 +8,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentTaskController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+
 
 /*------------------------------------------
 --------------------------------------------

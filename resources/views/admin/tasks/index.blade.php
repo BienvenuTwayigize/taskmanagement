@@ -74,7 +74,7 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $task->title }}</td>
-                    <td>{{ $task->assignedTo->name }}</td>
+                    <td>{{ $task->assignedTo ? $task->assignedTo->name : 'Unassigned' }}</td>
                     <td>{{ $task->createdBy->name }}</td>
                     <td>
                       @switch($task->status)
